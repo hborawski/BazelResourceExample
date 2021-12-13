@@ -1,0 +1,20 @@
+load("@build_bazel_rules_ios//rules:app.bzl", "ios_application")
+
+ios_application(
+    name = "BazelResourceExample",
+    srcs = glob(["BazelResourceExample/**/*.swift"]),
+    bundle_id = "com.example.BazelResourceExample",
+    resources = glob([
+      'BazelResourceExample/Assets.xcassets',
+      'BazelResourceExample/**/*.storyboard'
+    ], exclude_directories = 0),
+    families = [
+        "iphone",
+        "ipad",
+    ],
+    infoplists = [
+        '//:BazelResourceExample/Info.plist'
+    ],
+    minimum_os_version = "13.0",
+    visibility = ["//visibility:public"],
+)
